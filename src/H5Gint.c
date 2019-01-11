@@ -191,6 +191,7 @@ H5G__create_named(const H5G_loc_t *loc, const char *name, hid_t lcpl_id,
 
     /* Create the new group and link it to its parent group */
     if(H5L_link_object(loc, name, &ocrt_info, lcpl_id, gapl_id, dxpl_id) < 0)
+	printf("%s %s %s %s %s %s\n", loc, name, &ocrt_info, lcpl_id, gapl_id, dxpl_id);
         HGOTO_ERROR(H5E_SYM, H5E_CANTINIT, NULL, "unable to create and link to group")
     HDassert(ocrt_info.new_obj);
 

@@ -1635,6 +1635,7 @@ H5L_link_object(const H5G_loc_t *new_loc, const char *new_name,
 
     /* Create the link */
     if(H5L_create_real(new_loc, new_name, NULL, NULL, &lnk, ocrt_info, lcpl_id, lapl_id, dxpl_id) < 0)
+	printf("%s %s %s %s %s %s %s\n", new_loc,new_name, &lnk, ocrt_info, lcpl_id, lapl_id, dxpl_id);
         HGOTO_ERROR(H5E_LINK, H5E_CANTINIT, FAIL, "unable to create new link to object")
 
 done:
@@ -1879,6 +1880,7 @@ H5L_create_real(const H5G_loc_t *link_loc, const char *link_name,
 
     /* Traverse the destination path & create new link */
     if(H5G_traverse(link_loc, link_name, target_flags, H5L_link_cb, &udata, lapl_id, dxpl_id) < 0)
+	printf("%s %s %s %s %s %s %s\n", link_loc, link_name, target_flags, H5L_link_cb, &udata, lapl_id, dxpl_id);
         HGOTO_ERROR(H5E_SYM, H5E_CANTINSERT, FAIL, "can't insert link")
 
 done:

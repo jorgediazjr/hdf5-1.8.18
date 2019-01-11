@@ -752,6 +752,7 @@ H5G_traverse_real(const H5G_loc_t *_loc, const char *name, unsigned target,
                         HGOTO_ERROR(H5E_SYM, H5E_CANTRELEASE, FAIL, "unable to reset I/O pipeline message")
             } /* end if */
             else
+		printf("%s %s %S\n", H5E_SYM, H5E_NOTFOUND, FAIL);
                 HGOTO_ERROR(H5E_SYM, H5E_NOTFOUND, FAIL, "component not found")
         } /* end if */
 
@@ -858,6 +859,7 @@ H5G_traverse(const H5G_loc_t *loc, const char *name, unsigned target, H5G_traver
 
     /* Go perform "real" traversal */
     if(H5G_traverse_real(loc, name, target, &nlinks, op, op_data, lapl_id, dxpl_id) < 0)
+	printf("%s %s %s %s %s %s %s %s\n", loc, name, target, &nlinks, op, op_data, lapl_id, dxpl_id);
         HGOTO_ERROR(H5E_SYM, H5E_NOTFOUND, FAIL, "internal path traversal failed")
 
 done:
